@@ -62,7 +62,7 @@ $this->title = Yii::t('imagemanager','Image manager');
 				'id' => 'imagemanager-files',
 				'options' => [
 					'multiple' => true,
-					'accept' => 'image/*'
+					// 'accept' => 'image/*, '
 				],
 				'pluginOptions' => [
 					'uploadUrl' => Url::to(['manager/upload']),
