@@ -137,6 +137,29 @@ class ImageManager extends \yii\db\ActiveRecord {
 		return $return;
 	}
 
+	public function getIsImage(){
+		$sMediaPath = \Yii::$app->imagemanager->mediaPath;
+		$sFileExtension = pathinfo($this->fileName, PATHINFO_EXTENSION);
+		
+		if($sFileExtension == 'jpg' || $sFileExtension == 'gif' || $sFileExtension == 'png' || $sFileExtension == 'jpeg'){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function getFileIcon(){
+		$sMediaPath = \Yii::$app->imagemanager->mediaPath;
+		$sFileExtension = pathinfo($this->fileName, PATHINFO_EXTENSION);
+		$iconPath = Yii::getAlias('@web') . '/image/icons/icon-'.$sFileExtension.'.png';
+
+		if (file_exists($iconPath)) {
+			return $iconPath;
+		}else{
+			return Yii::getAlias('@web') . '/image/icons/icon-file.png';			
+		}
+	}
+
 	/**
 	 * Get image data dimension/size
 	 * @return array The image sizes
